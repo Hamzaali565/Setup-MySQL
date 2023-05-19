@@ -18,9 +18,10 @@ app.post(`/api/v1/add`, async (req, res) => {
         return;
       }
 
-      if (rows.length >= 0) {
+      if (rows.length > 0) {
         // Email already exists
         res.status(400).send({ message: "Email already exists" });
+        return;
       } else {
         // Email does not exist, proceed with insertion
         connection.query(
